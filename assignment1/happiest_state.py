@@ -65,6 +65,12 @@ states = {
 }
 
 
+<<<<<<< HEAD
+=======
+def hw():
+    print 'Hello, world!'
+
+>>>>>>> 7c7b8e082d8331c6745b1d5ae537379c39c69af8
 def lines(fp):
     print str(len(fp.readlines()))
 
@@ -100,7 +106,11 @@ def calculateEmotion(sliced_tweet):
             word_score += scores[word]
     return word_score
 
+<<<<<<< HEAD
 def happiestState(text):
+=======
+def geoLocation(text):
+>>>>>>> 7c7b8e082d8331c6745b1d5ae537379c39c69af8
     tweet_by_place = {}
 
     for line in range(len(text)):
@@ -108,6 +118,7 @@ def happiestState(text):
             if text[line]["place"] is not None:
                 if text[line]["place"]["country"] == "United States":
                     places = sliceState(text[line]["place"]["full_name"])
+<<<<<<< HEAD
                     tweet_emotion = calculateEmotion(sliceTweet(text[line]["text"]))
 
                     if places[1] in states:
@@ -119,6 +130,28 @@ def happiestState(text):
                                 hapiness[abv] = tweet_emotion
                                 #print abv + "  HAHA"
     print max(hapiness, key=hapiness.get)
+=======
+
+                    if places[1] in states:
+                        print places[1]
+                    else:
+                        for abv, state in states.items():
+                            if state == places[0]:
+                                print abv + "  HAHA"
+
+                    # PAREI AQUI.
+                    # Consegui fazer o nome full virar abreviação
+                    # Próximos passos:
+                    #   1. Criar um dicionário com a chave ABV
+                    #   2. Somar a emoção dos tweets como valor na chave
+                    #   3. Obter o maior número
+                    #   4. Printar a ABV como nome FULL através do states
+
+
+
+
+
+>>>>>>> 7c7b8e082d8331c6745b1d5ae537379c39c69af8
 
 def main():
     sent_file = open(sys.argv[1])
@@ -134,7 +167,11 @@ def main():
 
     array_of_lines = toLines(tweet_file)
 
+<<<<<<< HEAD
     happiestState(array_of_lines)
+=======
+    geoLocation(array_of_lines)
+>>>>>>> 7c7b8e082d8331c6745b1d5ae537379c39c69af8
 
     #print array_of_lines[8]["coordinates"]#.split()
     #for lines in range(len(array_of_lines)):
