@@ -51,10 +51,10 @@ def frequency(text):
                     else:
                         times[word] += 1
 
-    sort = sorted(times, key=times.get, reverse=True)[:5]
+    sort = sorted(times, key=times.get, reverse=True)[:10]
 
     for word in sort:
-        print word, times[word]
+        print word, float(times[word])
                 #print freq[str(item[0])]
 
     #return freq
