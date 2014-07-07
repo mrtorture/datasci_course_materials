@@ -65,9 +65,6 @@ states = {
 }
 
 
-def hw():
-    print 'Hello, world!'
-
 def lines(fp):
     print str(len(fp.readlines()))
 
@@ -103,7 +100,7 @@ def calculateEmotion(sliced_tweet):
             word_score += scores[word]
     return word_score
 
-def geoLocation(text):
+def happiestState(text):
     tweet_by_place = {}
 
     for line in range(len(text)):
@@ -111,26 +108,17 @@ def geoLocation(text):
             if text[line]["place"] is not None:
                 if text[line]["place"]["country"] == "United States":
                     places = sliceState(text[line]["place"]["full_name"])
+                    tweet_emotion = calculateEmotion(sliceTweet(text[line]["text"]))
 
                     if places[1] in states:
-                        print places[1]
+                        hapiness[places[1]] = tweet_emotion
+                        #print places[1], tweet_emotion
                     else:
                         for abv, state in states.items():
                             if state == places[0]:
-                                print abv + "  HAHA"
-
-                    # PAREI AQUI.
-                    # Consegui fazer o nome full virar abreviação
-                    # Próximos passos:
-                    #   1. Criar um dicionário com a chave ABV
-                    #   2. Somar a emoção dos tweets como valor na chave
-                    #   3. Obter o maior número
-                    #   4. Printar a ABV como nome FULL através do states
-
-
-
-
-
+                                hapiness[abv] = tweet_emotion
+                                #print abv + "  HAHA"
+    print max(hapiness, key=hapiness.get)
 
 def main():
     sent_file = open(sys.argv[1])
@@ -146,7 +134,7 @@ def main():
 
     array_of_lines = toLines(tweet_file)
 
-    geoLocation(array_of_lines)
+    happiestState(array_of_lines)
 
     #print array_of_lines[8]["coordinates"]#.split()
     #for lines in range(len(array_of_lines)):
