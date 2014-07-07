@@ -36,20 +36,29 @@ def frequency(text):
     counter = 0
 
     for line in range(len(text)):
-        if "text" in text[line]:
-            sliced_tweet = sliceTweet(text[line]["text"])
+        if "entities" in text[line]:
+            if "hashtags" in text[line]["entities"]:
+                    if text[line]["entities"]["hashtags"]:
+                        hashtag = text[line]["entities"]["hashtags"][0]["text"]
+                        #print hashtag
+                        if hashtag not in times:
+                            times[hashtag] = 1
+                            #print hashtag
+                        else:
+                            times[hashtag] += 1
+    #        sliced_tweet = sliceTweet(text[line]["text"])
 
-            for word in sliced_tweet:
-                counter += 1
+            #for word in sliced_tweet:
+            #    counter += 1
 
-                if '#' in word:
+            #    if '#' in word:
                     #print word
 
-                    if word not in times and word != ' ':
-                        times[word] = 1
+            #        if word not in times and word != ' ':
+            #            times[word] = 1
                 
-                    else:
-                        times[word] += 1
+            #        else:
+            #            times[word] += 1
 
     sort = sorted(times, key=times.get, reverse=True)[:10]
 
