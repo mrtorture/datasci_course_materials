@@ -1,0 +1,26 @@
+table(pred = predictions, true = flow$pop)
+         true
+pred      crypto  nano  pico synecho ultra
+  crypto      99     2     0       1     0
+  nano         2 11226     0       2   690
+  pico         0     0 20182      25  2723
+  synecho      1     1    94   18117     8
+  ultra        0  1469   584       1 17116
+
+
+
+         true
+pred      crypto  nano  pico synecho ultra
+  crypto       0     0     0       0     0
+  nano       102 10068     1      84  1414
+  pico         0     4 18833       2  3891
+  synecho      0    22    92   18060   200
+  ultra        0  2604  1934       0 15032
+
+
+pred      crypto  nano  pico synecho ultra
+  crypto     102     1     0       1     0
+  nano         0 11867     0       0   295
+  pico         0     0 20643       0  2169
+  synecho      0     3     1   18145     1
+  ultra        0   827   216       0 18072
